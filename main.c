@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include "string.h"
 #include "raylib.h"
 
 struct Ball {
@@ -17,8 +19,8 @@ int main() {
 
     // Ball data
     struct Ball ball;
-    ball.x = GetScreenWidth()/2.0;
-    ball.y = GetScreenHeight()/2.0;
+    ball.x = GetScreenWidth()/2;
+    ball.y = GetScreenHeight()/2;
     ball.radius = 5;
 
     ball.speedX = 300;
@@ -54,6 +56,11 @@ int main() {
         } else if (ball.y < 0) {
             ball.y = 0;
             ball.speedY *= -1;
+        }
+
+        if (ball.x > GetScreenWidth() || ball.x < 0) {
+            ball.x = GetScreenWidth()/2;
+            ball.y = GetScreenHeight()/2;
         }
 
         if (IsKeyDown(KEY_W)) {
