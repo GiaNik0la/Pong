@@ -77,15 +77,37 @@ int main() {
             ball.x + ball.radius * 2 > puddleTwo.x &&
             ball.y < puddleTwo.y + puddleTwo.height &&
             ball.radius * 2 + ball.y > puddleTwo.y) {
+
+            if (ball.x < puddleTwo.x + puddleTwo.width &&
+                ball.x + ball.radius * 2 > puddleTwo.x) {
+                ball.x = puddleTwo.x - puddleTwo.width;
+            } else if (ball.y < puddleTwo.y + puddleTwo.height &&
+                       ball.radius * 2 + ball.y > puddleTwo.y) {
+                ball.y = puddleTwo.y - puddleTwo.height;
+            }
+            
             ball.speedX *= -1;
         }
+        // if (rect1.x < rect2.x + rect2.w &&
+        // rect1.x + rect1.w > rect2.x &&
+        // rect1.y < rect2.y + rect2.h &&
+        // rect1.h + rect1.y > rect2.y)
 
         if (ball.x < puddleOne.x + puddleOne.width &&
             ball.x + ball.radius * 2 > puddleOne.x &&
             ball.y < puddleOne.y + puddleOne.height &&
             ball.radius * 2 + ball.y > puddleOne.y) {
+            
+            if (ball.x < puddleOne.x + puddleOne.width &&
+                ball.x + ball.radius * 2 > puddleOne.x) {
+                ball.x = puddleOne.x + puddleOne.width;
+            } else if (ball.y < puddleOne.y + puddleOne.height &&
+                       ball.radius * 2 + ball.y > puddleOne.y) {
+                ball.y = puddleOne.y + puddleOne.height;
+            }
             ball.speedX *= -1;
         }
+
 
         BeginDrawing();
             ClearBackground(BLACK);
